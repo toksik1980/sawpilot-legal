@@ -4,95 +4,243 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SawPilot — Politica de confidențialitate</title>
+<meta name="description" content="SawPilot ține lucrarea pe tabletă. La serverul nostru pleacă doar contul: adresa de e-mail și un semn al aparatului făcut de aplicație. Nu se vând, nu se dau mai departe.">
 <style>
-  body { font-family: system-ui, sans-serif; max-width: 720px; margin: 40px auto;
-         padding: 0 20px; line-height: 1.6; color: #1a1a1a; }
-  h1 { font-size: 26px; } h2 { font-size: 20px; margin-top: 32px; }
-  hr { margin: 40px 0; border: none; border-top: 1px solid #ddd; }
-  .data { color: #666; font-size: 14px; }
+  :root{
+    --bg:#f6f7f9; --ink:#181a1f; --soft:#5c6270; --line:#e3e5ea;
+    --card:#ffffff; --accent:#0a6aa4;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#111317; --ink:#e9ebef; --soft:#a0a6b2; --line:#282b32;
+           --card:#181b20; --accent:#5bb6ef; }
+  }
+  *{box-sizing:border-box}
+  body{ background:var(--bg); color:var(--ink); margin:0;
+        font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+        line-height:1.62; }
+  .wrap{ max-width:720px; margin:0 auto; padding:44px 22px 80px; }
+  h1{ font-size:27px; letter-spacing:-.01em; margin:0 0 4px; }
+  h2{ font-size:19px; margin:34px 0 8px; }
+  p,li{ font-size:16px; }
+  ul{ padding-left:22px; }
+  li{ margin:5px 0; }
+  .data{ color:var(--soft); font-size:14px; margin:0; }
+  .lead{ background:var(--card); border:1px solid var(--line); border-radius:12px;
+         padding:16px 18px; margin:22px 0 8px; }
+  code{ font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace; font-size:.92em;
+        background:color-mix(in srgb,var(--accent) 12%,transparent); padding:1px 5px; border-radius:5px; }
+  a{ color:var(--accent); }
+  hr{ margin:48px 0; border:none; border-top:1px solid var(--line); }
 </style>
 </head>
 <body>
+<div class="wrap">
 
 <h1>SawPilot — Politica de confidențialitate</h1>
-<p class="data">Ultima actualizare: 29 august 2026 · Operator: VecinuTech Srl, România</p>
+<p class="data">În vigoare din 10 septembrie 2026 · Operator: VECINU TECH S.R.L., Focșani, România</p>
 
-<h2>Pe scurt</h2>
-<p><strong>SawPilot nu colectează, nu stochează și nu transmite nicio dată
-personală.</strong> Aplicația lucrează în întregime pe dispozitivul dumneavoastră.</p>
+<div class="lead">
+<p style="margin:0"><strong>SawPilot ține lucrarea ta pe tabletă.</strong> Planurile
+de debitare, fișierele aduse, piesele bifate, etichetele — nimic din astea nu
+pleacă nicăieri. La serverul nostru ajunge un singur lucru: <strong>contul</strong>,
+dacă ți-l faci — adresa ta de e-mail și un semn al aparatului făcut de aplicație.
+Fără cont, aplicația nu trimite nimic la noi. Fără reclame, fără numărători,
+fără vânzare de date.</p>
+</div>
 
-<h2>Ce date atinge aplicația</h2>
+<h2>Contul, și ce pleacă la serverul nostru</h2>
+<p>Partea gratuită a programului merge fără cont și fără internet: patruzeci de
+tăieturi de probă, socotite pe tabletă. Contul îți trebuie ca să cumperi
+versiunea completă sau ca să folosești o licență pe care o ai deja. Intri cu
+adresa de e-mail și un cod de șase cifre primit pe e-mail; nu există parolă.</p>
+<p>Cu contul deschis, la serverul nostru — găzduit la Supabase, în Uniunea
+Europeană — pleacă:</p>
 <ul>
-  <li><strong>Fișierele pe care le importați</strong> (planuri de debitare, DXF,
-      imagini): sunt copiate și rămân numai pe dispozitiv. Nu părăsesc niciodată
-      tableta sau telefonul.</li>
-  <li><strong>Progresul lucrului</strong> (piese bifate, tăieturi, etichete):
-      se salvează local, pe dispozitiv, ca aplicația să poată relua de unde ați
-      rămas.</li>
-  <li><strong>Imprimanta de etichete</strong>: dacă folosiți tipărirea, aplicația
-      comunică direct cu imprimanta din rețeaua locală (Wi-Fi). Nimic nu trece
-      prin internet.</li>
+  <li><strong>adresa ta de e-mail</strong>, la intrarea în cont;</li>
+  <li><strong>un semn al aparatului</strong>: un număr aruncat la întâmplare de
+  aplicație, ținut pe tabletă. Nu e IMEI, nu e seria, nu e id-ul de reclame —
+  aplicația nu le citește. Serverul îl păstrează ca amprentă (SHA-256), nu ca
+  număr. Lângă el, numele pe care i-l dai tu tabletei („tableta de la circular")
+  și felul ei;</li>
+  <li><strong>la cumpărare prin Google Play</strong>, bonul cumpărăturii
+  (<em>purchase token</em>) pe care ni-l dă Google, ca serverul să verifice
+  cumpărătura cu Google și să scrie licența pe contul tău. Se păstrează și
+  numărul comenzii, ca la o rambursare licența să poată fi găsită;</li>
+  <li>din când în când, cât ai internet, aplicația <strong>întreabă serverul
+  dacă licența e încă bună</strong> și primește o cheie proaspătă. Fără internet
+  nu întreabă și merge mai departe, câte zile scrie în cheie.</li>
+</ul>
+<p>Serverul mai ține un jurnal al licenței — când a fost făcută, activată,
+retrasă — ca să-ți putem răspunde peste un an la întrebarea „de ce nu-mi mai
+merge".</p>
+
+<h2>Ce NU pleacă de pe tabletă</h2>
+<ul>
+  <li><strong>Lucrarea</strong>: planurile de debitare, fișierele aduse (DXF,
+  imagini), piesele bifate, tăieturile, etichetele. Rămân pe tabletă și se șterg
+  cu totul când dezinstalezi aplicația.</li>
+  <li><strong>Eticheta la imprimantă</strong>: dacă tipărești, aplicația
+  vorbește direct cu imprimanta din rețeaua atelierului (Wi-Fi), adică între
+  aparatele tale. Nu trece prin internet și nu ajunge la noi.</li>
 </ul>
 
-<h2>Ce NU face aplicația</h2>
+<h2>Plata</h2>
+<p>Versiunea completă se cumpără <strong>în aplicație, prin Google Play</strong>.
+Plata o face Google: aplicația nu vede și nu ține cardul. Ca Google să lege
+cumpărătura de contul tău, aplicația îi dă un <em>hash</em> al id-ului de cont
+(<code>obfuscatedAccountId</code>) — un șir din care nu iese nici adresa ta,
+nici numele. Google nu ne dă adresa ta de e-mail, iar noi nu i-o dăm lui.</p>
+<p>O rambursare la Google stinge licența singură: serverul întreabă Google în
+fiecare zi ce cumpărături au fost anulate.</p>
+<p>Dacă licența ai luat-o de pe site-ul nostru, pentru calculator, plata a trecut
+prin Stripe, pe site, după politica de acolo; aplicația de pe tabletă n-a avut
+nicio parte în ea. Pe tabletă intri cu același cont și licența e aceeași —
+un cont, o licență, mai multe aparate.</p>
+<p>Licența e o cheie semnată, ținută pe tabletă și verificată <strong>acolo, pe
+tabletă</strong>, cu o cheie publică scrisă în program. O cheie scrisă de mână și
+primită pe e-mail se lipește în aplicație și nu contactează niciun server, nici
+la punerea ei, nici mai târziu.</p>
+
+<h2>Permisiunile</h2>
 <ul>
-  <li>Nu cere și nu colectează nume, e-mail, telefon sau alte date personale.</li>
-  <li>Nu folosește analiză de utilizare (analytics), reclame sau urmărire.</li>
-  <li>Nu accesează locația, contactele, camera sau microfonul.</li>
-  <li>Nu creează conturi și nu trimite date către servere.</li>
+  <li><strong>Internet</strong> (<code>INTERNET</code>) — pentru cont, licență,
+  cumpărare și pentru imprimanta de etichete din rețeaua atelierului. E o
+  permisiune „normală": Android o dă singur, dar se vede în lista de pe Google
+  Play, și așa trebuie.</li>
+  <li><strong>Plata prin Google Play</strong>
+  (<code>com.android.vending.BILLING</code>) — vine cu biblioteca de plată a lui
+  Google, ca să se poată deschide fereastra de plată. Nu dă acces la nimic de pe
+  tabletă.</li>
 </ul>
+<p>Atât. Nici locație, nici contacte, nici cameră, nici microfon.</p>
 
-<h2>Ștergerea datelor</h2>
-<p>Toate datele aplicației se șterg complet prin dezinstalare sau prin
-„Ștergeți datele" din setările Android ale dispozitivului.</p>
+<h2>Drepturile tale, și ștergerea contului</h2>
+<p>Contul se face, se vede și se șterge din pagina ta de cont, pe
+<a href="https://panellogic.app/account">panellogic.app/account</a> — aceeași
+firmă, același cont pentru amândouă programele. Ștergerea lasă aparatele libere
+și scoate adresa; rândul licenței rămâne în registrul nostru, cu adresa de la
+cumpărare, fiindcă de o vânzare trebuie să dai socoteală ani de zile. Pe tabletă
+poți intra și ieși din cont oricând; ieșirea uită sesiunea, nu cheia plătită.</p>
+<p>Datele din aplicație sunt ale tale și stau la tine: le ștergi dezinstalând
+aplicația sau golind datele ei din setările Androidului. Ca să vezi ce avem
+despre tine, sau ca să corectăm ceva, scrie-ne la adresa de mai jos.</p>
 
-<h2>Modificări</h2>
-<p>Dacă o versiune viitoare va introduce funcții care ating date (de exemplu un
-cont de client), politica va fi actualizată înainte, iar aplicația va cere
-acordul explicit.</p>
+<h2>Copiii</h2>
+<p>SawPilot e o unealtă de atelier și nu se adresează copiilor. Nu adună nimic
+despre nimeni în afară de contul descris mai sus.</p>
+
+<h2>Dacă se schimbă ceva</h2>
+<p>Dacă vreodată aplicația va trimite mai mult decât ce scrie aici sau va cere
+altă permisiune, pagina asta se schimbă întâi, iar permisiunea se va vedea în
+Google Play înainte de instalare.</p>
 
 <h2>Contact</h2>
-<p>VecinuTech Srl · <a href="mailto:puiliviu@yahoo.com">puiliviu@yahoo.com</a></p>
+<p>VECINU TECH S.R.L. · <a href="mailto:contact@panellogic.app">contact@panellogic.app</a></p>
 
 <hr>
 
 <h1>SawPilot — Privacy Policy</h1>
-<p class="data">Last updated: 29 August 2026 · Operator: VecinuTech Srl, Romania</p>
+<p class="data">Effective 10 September 2026 · Operator: VECINU TECH S.R.L., Focșani, Romania</p>
 
-<h2>In short</h2>
-<p><strong>SawPilot does not collect, store, or transmit any personal
-data.</strong> The app works entirely on your device.</p>
+<div class="lead">
+<p style="margin:0"><strong>SawPilot keeps your work on the tablet.</strong>
+Cutting plans, imported files, checked parts, labels — none of it goes anywhere.
+One thing reaches our server: <strong>the account</strong>, if you make one —
+your e-mail address and a device sign the app makes up. With no account, the app
+sends us nothing. No ads, no analytics, no selling of data.</p>
+</div>
 
-<h2>What the app touches</h2>
+<h2>The account, and what goes to our server</h2>
+<p>The free part of the program works with no account and no internet: forty
+trial cuts, counted on the tablet. You need an account to buy the full version,
+or to use a licence you already own. You sign in with your e-mail address and a
+six-digit code sent to it; there is no password.</p>
+<p>Once signed in, the following goes to our server — hosted at Supabase, in the
+European Union:</p>
 <ul>
-  <li><strong>Files you import</strong> (cutting plans, DXF, images) are copied
-      to and remain only on your device. They never leave it.</li>
-  <li><strong>Work progress</strong> (checked parts, cuts, labels) is saved
-      locally so the app can resume where you left off.</li>
-  <li><strong>Label printer</strong>: if you print labels, the app talks
-      directly to a printer on your local Wi-Fi network. Nothing goes over the
-      internet.</li>
+  <li><strong>your e-mail address</strong>, when you sign in;</li>
+  <li><strong>a device sign</strong>: a random number the app makes up and keeps
+  on the tablet. It is not the IMEI, not the serial number, not the advertising
+  id — the app does not read those. The server keeps it as a fingerprint
+  (SHA-256), not as the number itself. Next to it, the name you give the tablet
+  ("the tablet by the saw") and its kind;</li>
+  <li><strong>when you buy through Google Play</strong>, the purchase token
+  Google hands the app, so that our server can verify the purchase with Google
+  and write the licence on your account. The order number is kept too, so a
+  refund can find the licence it belongs to;</li>
+  <li>now and then, while you have internet, the app <strong>asks the server
+  whether the licence is still good</strong> and receives a fresh key. With no
+  internet it does not ask, and keeps working for as many days as the key
+  allows.</li>
+</ul>
+<p>The server also keeps a log of the licence — when it was made, activated,
+withdrawn — so that a year from now we can answer "why did it stop working".</p>
+
+<h2>What does NOT leave the tablet</h2>
+<ul>
+  <li><strong>Your work</strong>: the cutting plans, the imported files (DXF,
+  images), the checked parts, the cuts, the labels. They stay on the tablet and
+  are deleted entirely when you uninstall the app.</li>
+  <li><strong>The label print</strong>: if you print, the app talks straight to
+  a printer on the workshop's Wi-Fi network — between your own devices. It does
+  not go over the internet and does not reach us.</li>
 </ul>
 
-<h2>What the app does NOT do</h2>
+<h2>Payment</h2>
+<p>The full version is bought <strong>inside the app, through Google
+Play</strong>. Google takes the payment: the app never sees or stores your card.
+So that Google can tie the purchase to your account, the app gives it a
+<em>hash</em> of the account id (<code>obfuscatedAccountId</code>) — a string
+that yields neither your address nor your name. Google does not give us the
+buyer's e-mail, and we do not give it yours.</p>
+<p>A refund at Google switches the licence off by itself: the server asks Google
+every day which purchases have been voided.</p>
+<p>If you bought the licence on our website, for the computer, the payment went
+through Stripe, on the site, under the policy there; the tablet app had no part
+in it. On the tablet you sign in with the same account and the licence is the
+same — one account, one licence, several devices.</p>
+<p>The licence is a signed key kept on the tablet and verified <strong>there, on
+the tablet</strong>, with a public key written into the program. A key written
+by hand and received by e-mail is pasted into the app and contacts no server,
+neither when it is entered nor later.</p>
+
+<h2>Permissions</h2>
 <ul>
-  <li>No collection of name, e-mail, phone number, or any personal data.</li>
-  <li>No analytics, advertising, or tracking of any kind.</li>
-  <li>No access to location, contacts, camera, or microphone.</li>
-  <li>No accounts, no data sent to servers.</li>
+  <li><strong>Internet</strong> (<code>INTERNET</code>) — for the account, the
+  licence, the purchase, and the label printer on the workshop's Wi-Fi. It is a
+  "normal" permission: Android grants it on its own, but it shows in the list on
+  Google Play, as it should.</li>
+  <li><strong>Google Play billing</strong>
+  (<code>com.android.vending.BILLING</code>) — comes with Google's billing
+  library, so the payment sheet can open. It gives access to nothing on the
+  tablet.</li>
 </ul>
+<p>That is all. No location, no contacts, no camera, no microphone.</p>
 
-<h2>Data deletion</h2>
-<p>All app data is fully removed by uninstalling the app or via
-"Clear data" in the Android device settings.</p>
+<h2>Your rights, and deleting the account</h2>
+<p>The account is made, seen and deleted from your account page at
+<a href="https://panellogic.app/account">panellogic.app/account</a> — the same
+company, the same account for both programs. Deleting it frees the devices and
+removes the address; the licence row stays in our records, with the purchase
+address, because a sale must be accounted for years afterwards. On the tablet
+you can sign in and out at any time; signing out forgets the session, not the
+paid key.</p>
+<p>The data in the app is yours and stays with you: remove it by uninstalling
+the app or clearing its data in the Android settings. To see what we hold about
+you, or to have something corrected, write to the address below.</p>
 
-<h2>Changes</h2>
-<p>If a future version introduces features that touch data (for example a
-customer account), this policy will be updated beforehand and the app will ask
-for explicit consent.</p>
+<h2>Children</h2>
+<p>SawPilot is a workshop tool and is not directed at children. It gathers
+nothing about anyone beyond the account described above.</p>
+
+<h2>If anything changes</h2>
+<p>If the app ever sends more than what is written here, or asks for another
+permission, this page changes first, and the permission shows on Google Play
+before installation.</p>
 
 <h2>Contact</h2>
-<p>VecinuTech Srl · <a href="mailto:puiliviu@yahoo.com">puiliviu@yahoo.com</a></p>
+<p>VECINU TECH S.R.L. · <a href="mailto:contact@panellogic.app">contact@panellogic.app</a></p>
 
+</div>
 </body>
 </html>
